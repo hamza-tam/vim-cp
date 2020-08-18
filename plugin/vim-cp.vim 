@@ -1,0 +1,13 @@
+fu! Create_cp_env()
+  let file = @%
+  vsp makefile
+  wincmd L
+  execute "normal! ggdGiall:\<CR>g++ -o prog ".file." && ./prog < input.txt > output.txt\<CR>\<CR>clean:\<CR>rm -rf prog makefile input.txt output.txt\<ESC>gg"
+  w
+  sp output.txt
+  w
+  set number!
+  sp input.txt
+  w
+  wincmd h
+endfunction
