@@ -2,11 +2,26 @@
 " Maintainer: Hamza Tamenaoul <https://hamza-tam.gitlab.io/>
 " version: 0.2
 
-function! Create_cp_env()
-  let file = @%
+if exists("g:loaded_vim_cp")
+  finish
+endif
+let g:loaded_vim_cp = 1
+
+let s:save_cpo = &cpo
+set cpo&vim
+
+if !hasmapto('<Plug>CreateCpEnv')
+  map <unique> <Leader>cp <Plug>CreateCpEnv
+endif
+
+nnoremap <unique> <script> <Plug>CreateCpEnv <SID>Create
+nnoremap <SID>Create :call <SID>Create_cp_env()<CR>
+
+function! s:Create_cp_env()
+  let s:file = @%
   vsp makefile
   wincmd L
-  execute "normal! ggdGiall:\<CR>g++ -o prog ".file." && ./prog < input.txt > output.txt\<CR>\<CR>clean:\<CR>rm -rf prog makefile input.txt output.txt\<ESC>gg"
+  execute "normal! ggdGiall:\<CR>g++ -o prog ".s:file." && ./prog < input.txt > output.txt\<CR>\<CR>clean:\<CR>rm -rf prog makefile input.txt output.txt\<ESC>gg"
   w
   sp output.txt
   w
@@ -15,3 +30,6 @@ function! Create_cp_env()
   w
   wincmd h
 endfunction
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
