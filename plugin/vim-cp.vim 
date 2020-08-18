@@ -1,4 +1,8 @@
-fu! Create_cp_env()
+" vim-cp.vim - Competitive programming for Vim
+" Maintainer: Hamza Tamenaoul <https://hamza-tam.gitlab.io/>
+" version: 0.2
+
+function! Create_cp_env()
   let file = @%
   vsp makefile
   wincmd L

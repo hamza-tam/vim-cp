@@ -1,0 +1,27 @@
+*vim-cp.txt* A plug-in to easily launch an environment for competitive
+programming.
+
+Author: Hamza Tamenaoul <https://hamza-tam.gitlab.io/>
+License: Same terms as Vim itself (see |license|)
+
+INTRODUCTION                            *vim-cp*
+
+Whenever you want to solve a competitive programming problem and 
+you need to create a quick compiling and testing environment.
+
+FUNCTIONS                               *vim-cp-commands*
+
+This function is local to the buffer in which it is executed.
+
+Create_cp_env         Open a buffer for with a configured make file
+                      to be used with the |:make| Vim command to
+                      compile and run you code against the test cases.
+                      Also opens two buffer, one for the input of the 
+                      program and second to show its output.
+
+ABOUT                                   *vim-cp-about*
+
+Get the latest version or report a bug on Github:
+
+https://github.com/hamza-tam/vim-cp
+
