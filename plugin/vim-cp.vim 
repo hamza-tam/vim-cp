@@ -1,5 +1,6 @@
 " vim-cp.vim - Competitive programming for Vim
 " Maintainer: Hamza Tamenaoul <https://hamza-tam.gitlab.io/>
+" Created: 2020 August 18
 " version: 0.2
 
 if exists("g:loaded_vim_cp")
@@ -24,6 +25,7 @@ function! s:Create_cp_env()
   execute "normal! ggdGiall:\<CR>g++ -o prog ".s:file." && ./prog < input.txt > output.txt\<CR>\<CR>clean:\<CR>rm -rf prog makefile input.txt output.txt\<ESC>gg"
   w
   sp output.txt
+  set noma
   w
   set number!
   sp input.txt
